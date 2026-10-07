@@ -1,0 +1,19 @@
+from pydantic import BaseModel ,Field
+from typing  import List ,Dict
+class patient(BaseModel):
+   name : str 
+   age : int 
+   health:str 
+   married: bool
+   allergies: List[str] =Field(max_length=5)
+   conta_details: Dict[str, str]
+def get_data(patient: patient):
+   print(patient.name)  
+   print(patient.age)
+   print(patient.health)
+   print(patient.married)
+   print(patient.allergies)
+   print(patient.conta_details)
+pateintinfo={"name": "John Doe", "age": 90, "health": "Good", "married": True, "allergies": ["Peanuts", "Shellfish"], "conta_details": {"email":"john.doe@example.com", "phone": "123-456-7890"}}
+patient_data = patient(**pateintinfo)
+get_data(patient_data)
